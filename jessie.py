@@ -33,7 +33,7 @@ async def on_message(message):
         global jessie
         jessie += 1
         print('gay')
-        await client.say('Jessie said gay')
+        await client.send_message(message.channel, 'Jessie said gay')
 
 @client.command()
 async def ping():
