@@ -25,7 +25,8 @@ async def change_status():
 async def on_ready():
     await client.change_presence(game=discord.Game(name='Online!'))
     print("Bot is ready")
-    
+
+@client.event
 async def on_message(message):
     if 'gay' in message.content:
                         #290419231734890497
