@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 14
+jessie = 18
 
 async def change_status():
     await client.wait_until_ready()
@@ -28,30 +28,31 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if 'gay' in message.content:
+    mess = message.content.lower()
+    if 'gay' in mess:
         if message.author.id == "290419231734890497":                  #290419231734890497
             global jessie
             jessie += 1
-    elif 'gae' in message.content:
+    elif 'gae' in mess:
         if message.author.id == "290419231734890497":                  #290419231734890497
             
             jessie += 1
-    elif 'gey' in message.content:
+    elif 'gey' in mess:
         if message.author.id == "290419231734890497":                  #290419231734890497
             
             jessie += 1
-    elif 'g@y' in message.content:
+    elif 'g@y' in mess:
         if message.author.id == "290419231734890497":                  #290419231734890497
             
             jessie += 1
-    elif 'g@e' in message.content:
+    elif 'g@e' in mess:
         if message.author.id == "290419231734890497":                  #290419231734890497
             
             jessie += 1
     
             #print('gay')
             #await client.send_message(message.channel, 'Jessie said gay')
-    mess = message.content.lower()        
+            
     if mess == 'jessie is gay':
         
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
