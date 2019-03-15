@@ -51,7 +51,9 @@ async def on_message(message):
     
             #print('gay')
             #await client.send_message(message.channel, 'Jessie said gay')
-    if message.content == 'jessie is gay':
+    mess = message.content.lower()        
+    if mess == 'jessie is gay':
+        
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
 
 @client.command()
