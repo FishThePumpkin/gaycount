@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 1
+jessie = 0
 
 async def change_status():
     await client.wait_until_ready()
@@ -32,8 +32,8 @@ async def on_message(message):
         if message.author.id == "246437474463776769":                  #290419231734890497
             global jessie
             jessie += 1
-            print('gay')
-            await client.send_message(message.channel, 'Jessie said gay')
+            #print('gay')
+            #await client.send_message(message.channel, 'Jessie said gay')
     if message.content == 'jessie is gay':
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
 
