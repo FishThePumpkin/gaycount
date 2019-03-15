@@ -28,7 +28,7 @@ async def on_ready():
     
 async def on_message(message):
     if 'gay' in message.content:
-        if author.id == "246437474463776769":                    #290419231734890497
+        if message.author.id == "246437474463776769":                    #290419231734890497
             jessie += 1
 
 @client.command()
