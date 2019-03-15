@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 0
+jessie = 1
 
 async def change_status():
     await client.wait_until_ready()
@@ -30,7 +30,8 @@ async def on_message(message):
     if 'gay' in message.content:
                         #290419231734890497
         jessie += 1
-        await client.say("Jessie said gay")
+        print('gay')
+        await client.say('Jessie said gay')
 
 @client.command()
 async def ping():
