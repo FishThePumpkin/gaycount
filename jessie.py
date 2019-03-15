@@ -29,11 +29,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if 'gay' in message.content:
-                        #290419231734890497
-        global jessie
-        jessie += 1
-        print('gay')
-        await client.send_message(message.channel, 'Jessie said gay')
+        if message.author.id == "246437474463776769":                  #290419231734890497
+            global jessie
+            jessie += 1
+            print('gay')
+            await client.send_message(message.channel, 'Jessie said gay')
 
 @client.command()
 async def ping():
