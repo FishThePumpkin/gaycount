@@ -27,11 +27,7 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='Online!'))
     print("Bot is ready")
     
-@client.event
-async def on_message(message):
-    if 'gay' in message.content:
-        if author.id == "246437474463776769":                    #290419231734890497
-            jessie += 1
+
 
 @client.command()
 async def ping():
