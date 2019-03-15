@@ -35,7 +35,6 @@ async def on_message(message):
             print('gay')
             await client.send_message(message.channel, 'Jessie said gay')
     if message.content == 'jessie is gay':
-            global jessie
             await client.say("Jessie has said gay %d times" % jessie) 
 
 @client.command()
