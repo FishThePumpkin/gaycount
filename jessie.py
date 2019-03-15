@@ -29,7 +29,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if 'gay' in message.content:
-        if message.author.id == "246437474463776769":                  #290419231734890497
+        if message.author.id == "290419231734890497":                  #290419231734890497
             global jessie
             jessie += 1
             #print('gay')
