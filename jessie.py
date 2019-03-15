@@ -34,15 +34,15 @@ async def on_message(message):
             jessie += 1
     elif 'gae' in message.content:
         if message.author.id == "290419231734890497":                  #290419231734890497
-            global jessie
+            
             jessie += 1
     elif 'g@y' in message.content:
         if message.author.id == "290419231734890497":                  #290419231734890497
-            global jessie
+            
             jessie += 1
     elif 'g@e' in message.content:
         if message.author.id == "290419231734890497":                  #290419231734890497
-            global jessie
+            
             jessie += 1
     
             #print('gay')
