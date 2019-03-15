@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 0
+jessie = 11
 
 async def change_status():
     await client.wait_until_ready()
@@ -32,6 +32,19 @@ async def on_message(message):
         if message.author.id == "290419231734890497":                  #290419231734890497
             global jessie
             jessie += 1
+    elif 'gae' in message.content:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            global jessie
+            jessie += 1
+    elif 'g@y' in message.content:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            global jessie
+            jessie += 1
+    elif 'g@e' in message.content:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            global jessie
+            jessie += 1
+    
             #print('gay')
             #await client.send_message(message.channel, 'Jessie said gay')
     if message.content == 'jessie is gay':
