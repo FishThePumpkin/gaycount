@@ -23,7 +23,7 @@ async def change_status():
 
 @client.command()
 async def jessiegay():
-    await client.say("Jessie has said gay %d times" % jessie)        
+           
         
 @client.event
 async def on_ready():
@@ -38,6 +38,9 @@ async def on_message(message):
             jessie += 1
             print('gay')
             await client.send_message(message.channel, 'Jessie said gay')
+    if message.content == 'jessie is gay'
+            global jessie
+            await client.say("Jessie has said gay %d times" % jessie) 
 
 @client.command()
 async def ping():
