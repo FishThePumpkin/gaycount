@@ -21,6 +21,10 @@ async def change_status():
         await asyncio.sleep(2)
 
 
+@client.command()
+async def jessiegay():
+    await client.say("Jessie has said gay %d times" % jessie)        
+        
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name='Online!'))
@@ -39,9 +43,7 @@ async def on_message(message):
 async def ping():
     await client.say('Pong!')
 
-@client.command()
-async def jessiegay():
-    await client.say("Jessie has said gay %d times" % jessie)
+
 
 @client.command(pass_context=True)
 async def help(ctx):
