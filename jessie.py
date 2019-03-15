@@ -30,6 +30,7 @@ async def on_ready():
 async def on_message(message):
     if 'gay' in message.content:
                         #290419231734890497
+        global jessie
         jessie += 1
         print('gay')
         await client.say('Jessie said gay')
