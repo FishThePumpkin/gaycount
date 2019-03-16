@@ -152,6 +152,11 @@ async def on_message(message):
     if mess == 'jessie is gay':
         
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
+    if mess == 'jessie said gay':
+        if message.author.id == "246437474463776769":
+            await client.send_message(message.channel, ":white_check_mark: **+1**")
+            global jessie
+            jessie += 1
             
 @client.command()
 async def ping():
