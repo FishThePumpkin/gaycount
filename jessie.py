@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 101
+jessie = 100
 
 async def change_status():
     await client.wait_until_ready()
