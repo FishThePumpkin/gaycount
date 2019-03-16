@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 99
+jessie = 101
 
 async def change_status():
     await client.wait_until_ready()
@@ -153,7 +153,10 @@ async def on_message(message):
         
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
     if mess == 'jessie said gay':
-        if message.author.id == "246437474463776769":
+        if message.author.id == "246437474463776769": #me
+            await client.send_message(message.channel, ":white_check_mark: **+1**")
+            jessie += 1
+        elif message.author.id == "346924005997019139": #viv
             await client.send_message(message.channel, ":white_check_mark: **+1**")
             jessie += 1
             
