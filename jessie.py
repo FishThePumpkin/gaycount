@@ -9,7 +9,7 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
-jessie = 82
+jessie = 94
 
 async def change_status():
     await client.wait_until_ready()
@@ -63,11 +63,56 @@ async def on_message(message):
             jessie += 1
             #print('gay')
             await client.send_message(message.channel, '**+1**')
+    elif 'gei' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gãi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gåi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gāi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gài' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gái' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gâi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gäi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gæy' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
             
     if mess == 'jessie is gay':
         
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
-
+            
 @client.command()
 async def ping():
     await client.say('Pong!')
