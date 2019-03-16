@@ -113,7 +113,42 @@ async def on_message(message):
             jessie += 1
             #print('gay')
             await client.send_message(message.channel, '**+1**')
-            
+    elif 'gėi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gęi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gēi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gêi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gèi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'géi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    elif 'gëi' in mess:
+        if message.author.id == "290419231734890497":                  #290419231734890497
+            jessie += 1
+            #print('gay')
+            await client.send_message(message.channel, '**+1**')
+    
     if mess == 'jessie is gay':
         
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
