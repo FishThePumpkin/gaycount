@@ -61,7 +61,7 @@ async def on_message(message):
             f_contents = f.readline()
             new_contents = int(f_contents) + 1
             f.seek(0)
-            f.write(new_contents)
+            f.write(str(new_contents))
             print(f_contents, end = '')
             print(new_contents)
         
