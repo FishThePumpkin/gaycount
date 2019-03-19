@@ -57,8 +57,8 @@ async def on_message(message):
                 jessie += 1
                 break
     if mess == 'writetofile':
-        f=open("counters.txt","w")
-        f.write("I love python")
+        f = open("counters.txt","r")
+        print(f.name)
         f.close()
 @client.command()
 async def ping():
