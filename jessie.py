@@ -16,9 +16,11 @@ IDs = {
     "Vivian": "346924005997019139",
     "Owner": "246437474463776769",
     "Bot": "556089994708779033",
-    "Rachel": "318366307169075201"
+    "Rachel": "318366307169075201",
+    "Labib": "378820414350295040"
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
+imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
 jessie = 132
 
 async def change_status():
@@ -62,26 +64,27 @@ async def on_message(message):
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
             if c in mess:
-                if message.author.id == IDs["Rachel"]:
-                    chars = mess.split()
-                    #print(chars)
-                    joinedmess = ' '
-                    for i in range (0, len(chars)):
-                        if chars[i] == "not":
-                            #print(i)
-                            #await client.send_message(message.channel, chars[i])
-                            a = i + 1
-                            if a == len(chars):
-                                joinedmess = " not "
+                for d in imnotPERMS:
+                    if message.author.id == d:
+                        chars = mess.split()
+                        #print(chars)
+                        joinedmess = ' '
+                        for i in range (0, len(chars)):
+                            if chars[i] == "not":
+                                #print(i)
+                                #await client.send_message(message.channel, chars[i])
+                                a = i + 1
+                                if a == len(chars):
+                                    joinedmess = " not "
+                                    break
+                                for j in range (a, len(chars)):        
+                                    joinedmess += chars[j]
+                                    joinedmess += ' '
+                                    #await client.send_message(message.channel, joinedmess)   
                                 break
-                            for j in range (a, len(chars)):        
-                                joinedmess += chars[j]
-                                joinedmess += ' '
-                                #await client.send_message(message.channel, joinedmess)   
-                            break
-                    newMess = "It's not like I'm%sor anything..." % joinedmess
-                    await client.send_message(message.channel, newMess)   
-                    
+                        newMess = "It's not like I'm%sor anything..." % joinedmess
+                        await client.send_message(message.channel, newMess)   
+                    break
                 
 @client.command()
 async def ping():
