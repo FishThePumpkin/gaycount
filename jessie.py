@@ -49,7 +49,7 @@ async def on_message(message):
     
     if mess == 'jessie is gay':
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
-            break
+            
             
     if mess == 'jessie said gay':
         for b in permissions:
@@ -57,6 +57,7 @@ async def on_message(message):
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
                 jessie += 1
                 break
+                
     for c in imnot:
         if c in mess:
             chars = mess.split()
