@@ -16,11 +16,7 @@ IDs = {
     "Owner": "246437474463776769"
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
-
-f = open("counters.txt","r")
-jessie = f.readline()
-f.close()
-jessie = int(jessie)
+jessie = 132
 
 async def change_status():
     await client.wait_until_ready()
@@ -46,13 +42,8 @@ async def on_message(message):
     for a in gays:
         if a in mess:
             if message.author.id == IDs["Jessie"]:
-                #jessie += 1
+                jessie += 1
                 await client.send_message(message.channel, '**+1**')
-                with open("counters.txt","r+") as f:
-                    f_contents = f.readline()
-                    new_contents = int(f_contents) + 1
-                    f.seek(0)
-                    f.write(str(new_contents))
                 break
     
     if mess == 'jessie is gay':
@@ -62,24 +53,8 @@ async def on_message(message):
         for b in permissions:
             if message.author.id == b:
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
-                with open("counters.txt","r+") as f:
-                    f_contents = f.readline()
-                    new_contents = int(f_contents) + 1
-                    f.seek(0)
-                    f.write(str(new_contents))
-                #jessie += 1
+                jessie += 1
                 break
-    if mess == 'writetofile':
-        with open("counters.txt","r+") as f:
-            f_contents = f.readline()
-            new_contents = int(f_contents) + 1
-            f.seek(0)
-            f.write(str(new_contents))
-            print(f_contents, end = '')
-            print(new_contents)
-            f.seek(0)
-            f_contents = f.readline()
-            print(f_contents)
         
 @client.command()
 async def ping():
