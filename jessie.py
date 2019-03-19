@@ -45,6 +45,11 @@ async def on_message(message):
             if message.author.id == IDs["Jessie"]:
                 jessie += 1
                 await client.send_message(message.channel, '**+1**')
+                with open("counters.txt","r+") as f:
+                    f_contents = f.readline()
+                    new_contents = int(f_contents) + 1
+                    f.seek(0)
+                    f.write(str(new_contents))
                 break
     
     if mess == 'jessie is gay':
@@ -54,6 +59,11 @@ async def on_message(message):
         for b in permissions:
             if message.author.id == b:
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
+                with open("counters.txt","r+") as f:
+                    f_contents = f.readline()
+                    new_contents = int(f_contents) + 1
+                    f.seek(0)
+                    f.write(str(new_contents))
                 jessie += 1
                 break
     if mess == 'writetofile':
