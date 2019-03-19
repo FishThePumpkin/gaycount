@@ -64,6 +64,9 @@ async def on_message(message):
             f.write(str(new_contents))
             print(f_contents, end = '')
             print(new_contents)
+            f.seek(0)
+            f_contents = f.readline()
+            print(f_contents)
         
 @client.command()
 async def ping():
