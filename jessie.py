@@ -64,7 +64,7 @@ async def on_message(message):
             found = 0
             
             for e in chars:
-                while not e = "not":
+                while not e == "not":
                     count = count + 1
             await client.send_message(message.channel, mess[count])
                 
