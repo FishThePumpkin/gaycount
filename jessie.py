@@ -62,7 +62,7 @@ async def on_message(message):
         if c in mess:
             chars = mess.split()
             print(chars)
-            found = false
+            found = 0
             for i in range (0, len(chars)):
                 if chars[i] == "not":
                     print(i)
