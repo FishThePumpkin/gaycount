@@ -67,6 +67,13 @@ async def on_message(message):
                 if chars[i] == "not":
                     print(i)
                     await client.send_message(message.channel, chars[i])
+                    a = i + 1
+                    for j in range (a, len(chars)):
+                        joinedmess += chars[j]
+                        joinedmess += ' '
+                        await client.send_message(message.channel, joinedmess)
+                        newMess = "It's not like I want to %s or anything..." % joinedmess
+                        await client.send_message(message.channel, newMess)
                     break
             
                 
