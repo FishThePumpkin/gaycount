@@ -14,7 +14,8 @@ imnot = ["i'm not","im not"]
 IDs = {
     "Jessie": "290419231734890497",
     "Vivian": "346924005997019139",
-    "Owner": "246437474463776769"
+    "Owner": "246437474463776769",
+    "Bot": "556089994708779033"
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 jessie = 132
@@ -57,27 +58,27 @@ async def on_message(message):
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
                 jessie += 1
                 break
-                
-    for c in imnot:
-        if c in mess:
-            chars = mess.split()
-            print(chars)
-            joinedmess = ' '
-            for i in range (0, len(chars)):
-                if chars[i] == "not":
-                    #print(i)
-                    #await client.send_message(message.channel, chars[i])
-                    a = i + 1
-                    #if a == len(chars):
-                        #joinedmess = " not "
-                        #break
-                    for j in range (a, len(chars)):        
-                        joinedmess += chars[j]
-                        joinedmess += ' '
-                        #await client.send_message(message.channel, joinedmess)   
-                    break
-            newMess = "It's not like I'm%sor anything..." % joinedmess
-            await client.send_message(message.channel, newMess)   
+    if not message.author.id == IDs["Bot"]:
+        for c in imnot:
+            if c in mess:
+                chars = mess.split()
+                print(chars)
+                joinedmess = ' '
+                for i in range (0, len(chars)):
+                    if chars[i] == "not":
+                        #print(i)
+                        #await client.send_message(message.channel, chars[i])
+                        a = i + 1
+                        if a == len(chars):
+                            joinedmess = " not "
+                            break
+                        for j in range (a, len(chars)):        
+                            joinedmess += chars[j]
+                            joinedmess += ' '
+                            #await client.send_message(message.channel, joinedmess)   
+                        break
+                newMess = "It's not like I'm%sor anything..." % joinedmess
+                await client.send_message(message.channel, newMess)   
                     
                 
 @client.command()
