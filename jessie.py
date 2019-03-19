@@ -63,7 +63,7 @@ async def on_message(message):
             chars = mess.split()
             count = 2
             found = 0
-            
+            print(chars)
             for e in chars:
                 while not e == "not":
                     count = count + 1
