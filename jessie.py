@@ -59,7 +59,7 @@ async def on_message(message):
     if mess == 'writetofile':
         with open("counters.txt","r+") as f:
             f_contents = f.readline()
-            new_contents = f_contents + 1
+            new_contents = int(f_contents) + 1
             f.seek(0)
             f.write(new_contents)
             print(f_contents, end = '')
