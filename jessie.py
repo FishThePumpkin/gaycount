@@ -9,7 +9,6 @@ import os
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['RockyxRachel','Jessie is gay','bitch lasagne','1x1=2']
-jessie = 132
 gays = ['gay','gai','gae','gey','gei','gya']
 IDs = {
     "Jessie": "290419231734890497",
@@ -18,6 +17,9 @@ IDs = {
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 
+f = open("counters.txt","r")
+jessie = f.readline()
+f.close()
 
 async def change_status():
     await client.wait_until_ready()
@@ -43,7 +45,7 @@ async def on_message(message):
     for a in gays:
         if a in mess:
             if message.author.id == IDs["Jessie"]:
-                jessie += 1
+                #jessie += 1
                 await client.send_message(message.channel, '**+1**')
                 with open("counters.txt","r+") as f:
                     f_contents = f.readline()
@@ -64,7 +66,7 @@ async def on_message(message):
                     new_contents = int(f_contents) + 1
                     f.seek(0)
                     f.write(str(new_contents))
-                jessie += 1
+                #jessie += 1
                 break
     if mess == 'writetofile':
         with open("counters.txt","r+") as f:
