@@ -79,7 +79,7 @@ async def on_message(message):
                                 joinedmess += ' '
                                 #await client.send_message(message.channel, joinedmess)   
                             break
-                    newMess = "It's not like I'm%sor anything..." % joinedmess
+                    newMess = "It's not like I'm%sor anything... :tsundere:" % joinedmess
                     await client.send_message(message.channel, newMess)   
                     
                 
