@@ -61,12 +61,11 @@ async def on_message(message):
     for c in imnot:
         if c in mess:
             chars = mess.split()
-            count = 2
-            found = 0
             print(chars)
-            for e in chars:
-                while not e == "not":
-                    count = count + 1
+            found = false
+            for i in range (0, len(chars)):
+                if chars[i] == "not":
+                    print(i)
                     break
             await client.send_message(message.channel, mess[count])
                 
