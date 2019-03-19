@@ -45,6 +45,7 @@ async def on_message(message):
             if message.author.id == IDs["Owner"]:
                 jessie += 1
                 await client.send_message(message.channel, '**+1**')
+                break
     
     if mess == 'jessie is gay':
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
