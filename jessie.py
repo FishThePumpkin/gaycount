@@ -46,7 +46,7 @@ async def on_message(message):
                 jessie += 1
                 await client.send_message(message.channel, '**+1**')
                 break
-    
+    #yes
     if mess == 'jessie is gay':
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
             
