@@ -10,6 +10,7 @@ client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['RockyxRachel','Jessie is gay','bitch lasagne','1x1=2']
 gays = ['gay','gai','gae','gey','gei','gya']
+imnot = ["i'm not","im not"]
 IDs = {
     "Jessie": "290419231734890497",
     "Vivian": "346924005997019139",
@@ -48,6 +49,7 @@ async def on_message(message):
     
     if mess == 'jessie is gay':
             await client.send_message(message.channel, "Jessie has said gay %d times" % jessie) 
+            break
             
     if mess == 'jessie said gay':
         for b in permissions:
@@ -55,7 +57,19 @@ async def on_message(message):
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
                 jessie += 1
                 break
-        
+    for c in imnot:
+        if c in mess:
+            chars = mess.split()
+            count = 2
+            found = 0
+            
+            for e in chars:
+                while not e = "not":
+                    count = count + 1
+            await client.send_message(message.channel, mess[count])
+                
+                    
+                
 @client.command()
 async def ping():
     await client.say('Pong!')
