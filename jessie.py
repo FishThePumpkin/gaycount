@@ -20,6 +20,7 @@ permissions = [IDs["Vivian"],IDs["Owner"]]
 f = open("counters.txt","r")
 jessie = f.readline()
 f.close()
+jessie = int(jessie)
 
 async def change_status():
     await client.wait_until_ready()
