@@ -69,6 +69,7 @@ async def on_message(message):
                     await client.send_message(message.channel, chars[i])
                     a = i + 1
                     for j in range (a, len(chars)):
+                        joinedmess = ' '
                         joinedmess += chars[j]
                         joinedmess += ' '
                         await client.send_message(message.channel, joinedmess)
