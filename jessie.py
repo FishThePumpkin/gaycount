@@ -8,9 +8,9 @@ import os
 
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
-status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
+status = ['RockyxRachel','Jessie is gay','bitch lasagne','1x1=2']
 jessie = 132
-gays = ['gay','gey','gei','gya']
+gays = ['gay','gai','gae','gey','gei','gya']
 IDs = {
     "Jessie": "290419231734890497",
     "Vivian": "346924005997019139",
