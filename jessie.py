@@ -64,7 +64,7 @@ async def on_message(message):
             print(chars)
             joinedmess = ' '
             for i in range (0, len(chars)):
-                if chars[i] == "not":
+                #if chars[i] == "not":
                     #print(i)
                     #await client.send_message(message.channel, chars[i])
                     a = i + 1
