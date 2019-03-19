@@ -58,8 +58,8 @@ async def on_message(message):
                 break
     if mess == 'writetofile':
         with open("counters.txt","r") as f:
-            f_contents = f.read()
-            print(f_contents)
+            f_contents = f.readline()
+            print(f_contents, end = '')
         
 @client.command()
 async def ping():
