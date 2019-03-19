@@ -62,22 +62,22 @@ async def on_message(message):
         if c in mess:
             chars = mess.split()
             print(chars)
-            found = 0
+            joinedmess = ' '
             for i in range (0, len(chars)):
                 if chars[i] == "not":
                     print(i)
                     await client.send_message(message.channel, chars[i])
                     a = i + 1
                     for j in range (a, len(chars)):
-                        joinedmess = ' '
+                        
                         joinedmess += chars[j]
                         joinedmess += ' '
                         await client.send_message(message.channel, joinedmess)
-                        newMess = "It's not like I want to %s or anything..." % joinedmess
-                        await client.send_message(message.channel, newMess)
+                        
                     break
             
-                
+             newMess = "It's not like I want to %s or anything..." % joinedmess
+                        await client.send_message(message.channel, newMess)   
                     
                 
 @client.command()
