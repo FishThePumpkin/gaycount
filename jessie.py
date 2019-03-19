@@ -56,7 +56,10 @@ async def on_message(message):
                 await client.send_message(message.channel, ":white_check_mark: **+1**")
                 jessie += 1
                 break
-            
+    if mess == 'writetofile':
+        f=open("counters.txt","w")
+        f.write("I love python")
+        f.close()
 @client.command()
 async def ping():
     await client.say('Pong!')
