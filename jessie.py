@@ -66,8 +66,9 @@ async def on_message(message):
             for i in range (0, len(chars)):
                 if chars[i] == "not":
                     print(i)
+                    await client.send_message(message.channel, chars[i])
                     break
-            await client.send_message(message.channel, mess[count])
+            
                 
                     
                 
