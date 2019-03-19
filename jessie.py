@@ -10,7 +10,7 @@ client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['RockyxRachel','Jessie is gay','bitch lasagne','1x1=2']
 gays = ['gay','gai','gae','gey','gei','gya']
-imnot = ["i'm not","im not","i’m not"]
+imnot = ["i'm not","im not","i’m not","i am not"]
 IDs = {
     "Jessie": "290419231734890497",
     "Vivian": "346924005997019139",
