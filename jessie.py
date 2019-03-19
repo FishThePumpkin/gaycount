@@ -62,7 +62,7 @@ async def on_message(message):
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
             if c in mess:
-                #if message.author.id == IDs["Rachel"]:
+                if message.author.id == IDs["Rachel"]:
                     chars = mess.split()
                     #print(chars)
                     joinedmess = ' '
