@@ -72,7 +72,7 @@ async def on_message(message):
                         
                         joinedmess += chars[j]
                         joinedmess += ' '
-                        await client.send_message(message.channel, joinedmess)
+                        #await client.send_message(message.channel, joinedmess)
                         
                     break
             
