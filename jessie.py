@@ -42,7 +42,7 @@ async def on_message(message):
     mess = message.content.lower()
     for a in gays:
         if a in mess:
-            if message.author.id == IDs["Owner"]:
+            if message.author.id == IDs["Jessie"]:
                 jessie += 1
                 await client.send_message(message.channel, '**+1**')
                 break
