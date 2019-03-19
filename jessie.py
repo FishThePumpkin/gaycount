@@ -84,7 +84,7 @@ async def on_message(message):
                                 break
                         newMess = "It's not like I'm%sor anything..." % joinedmess
                         await client.send_message(message.channel, newMess)   
-                    break
+                        break
                 
 @client.command()
 async def ping():
