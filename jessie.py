@@ -21,7 +21,7 @@ IDs = {
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
-jessie = 143
+jessie = 144
 
 async def change_status():
     await client.wait_until_ready()
