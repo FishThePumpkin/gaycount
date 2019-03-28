@@ -62,7 +62,10 @@ async def on_message(message):
                 jessie += 1
                 break
     if mess == 'fireworks':
+
         await client.send_message(message.channel,':sparkler:')
+        await client.send_message(message.channel,':fireworks:')
+        await client.send_message(message.channel,':milky_way:')
         
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
