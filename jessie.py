@@ -45,8 +45,8 @@ async def on_message(message):
     global IDs
     global gays
     mess = message.content.lower()
-    lotto = randint(1,5)
-    if lotto == 1:
+    lotto = randint(1,10000)
+    if lotto == 7777:
         if message.author.id == "246437474463776769":
             authid = message.author.id
             authid = str(authid)
