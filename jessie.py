@@ -47,10 +47,9 @@ async def on_message(message):
     mess = message.content.lower()
     lotto = randint(1,10000)
     if lotto == 1004:
-        if message.author.id == "246437474463776769":
-            authid = message.author.id
-            authid = str(authid)
-            await client.send_message(message.channel, "**OH MY GOD** <@%s> **JUST ROLLED A 1004 OUT OF 10000 POSSIBLE NUMBERS%s** **THAT'S A WOPPING 0.01%s%s** **GIVE** <@%s> **AN APPLAUSE%s** :clap::clap::clap: (You must say Jessie is gay now.)" % (authid,"!","%","!",authid,"!!!!!"))
+        authid = message.author.id
+        authid = str(authid)
+        await client.send_message(message.channel, "**OH MY GOD** <@%s> **JUST ROLLED A 1004 OUT OF 10000 POSSIBLE NUMBERS%s** **THAT'S A WOPPING 0.01%s%s** **GIVE** <@%s> **AN APPLAUSE%s** :clap::clap::clap: (You must say Jessie is gay now.)" % (authid,"!","%","!",authid,"!!!!!"))
     for a in gays:
         if a in mess:
             if message.author.id == IDs["Jessie"]:
