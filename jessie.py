@@ -50,7 +50,7 @@ async def on_message(message):
         if message.author.id == "246437474463776769":
             authid = message.author.id
             authid = str(authid)
-            await client.send_message(message.channel, "**OH MY GOD** <@%s> **JUST ROLLED A 7777 OUT OF 10000 POSSIBLE NUMBERS%!** **THAT'S A WOPPING 0.01%%%!** **GIVE** <@%s> **AN APPLAUSE%!%!%!%!%!** :clap::clap::clap:" % (authid,authid))
+            await client.send_message(message.channel, "**OH MY GOD** <@%s> **JUST ROLLED A 7777 OUT OF 10000 POSSIBLE NUMBERS%s** **THAT'S A WOPPING 0.01%s** **GIVE** <@%s> **AN APPLAUSE%s** :clap::clap::clap:" % (authid,"!","!",authid,"!!!!!"))
     for a in gays:
         if a in mess:
             if message.author.id == IDs["Jessie"]:
