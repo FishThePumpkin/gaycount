@@ -47,8 +47,9 @@ async def on_message(message):
     auth = message.author.id
     authid = str(auth)
     mess = message.content.lower()
+    channel = message.channel
     lotto = randint(1,10000)
-    print(lotto)
+    print("%s %s %d" % (authid,channel,lotto))
     if lotto == 1004:  
         await client.send_message(message.channel, "**OH MY GOD** <@%s> **JUST ROLLED A 1004 OUT OF 10000 POSSIBLE NUMBERS%s** **THAT'S A WOPPING 0.01%s%s** **GIVE** <@%s> **AN APPLAUSE%s** :clap::clap::clap: (You must say Jessie is gay now.)" % (authid,"!","%","!",authid,"!!!!!"))
     for a in gays:
