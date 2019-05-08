@@ -89,8 +89,8 @@ async def on_message(message):
                 await client.send_message(message.channel,'test')
                 for key in IDs:
                     if key == message.author.id:
-                       Player1 = key 
-                battle(Player1,Player2)
+                        Player1 = key 
+                        battle(Player1,Player2)
                 break
     
     if not message.author.id == IDs["Bot"]:
