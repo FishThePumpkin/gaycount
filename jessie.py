@@ -20,6 +20,13 @@ IDs = {
     "Rachel": "318366307169075201",
     "Labib": "378820414350295040"
 }
+characterStats = {
+    "Drater": [0,0,0,0,0,0,0],
+    "Josh": [2,11,4,6,8,6,3],
+    "Thad": [2,4,3,9,10,9,6],
+    "Enzo": [9,10,5,8,4,3,4],
+    "Yikes": [7,5,8,5,8,5,5]
+    }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
 jessie = 328
@@ -132,7 +139,66 @@ async def say(*args):
         output += ' '
     await client.say(output)
     
+def battle(p1,p2):
+    print("Battle begins between %s and %s" % (p1, p2))
+    if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
+        draterStats(1)
+        
+    p1Stats = characterStats[p1]
+    p2Stats = characterStats[p2]
     
+    #First turn based on agility
+    if p1Stats[3] > p2Stats[3]:
+        print("%s goes first!" % p1)
+    elif p1Stats[3] == p2Stats[3]:
+        print("Rolling dice...")
+        rng = randint(0,1)
+        if rng == 0:
+            print("%s goes first!" % p1)
+        else:
+            print("%s goes first!" % p2)
+    else:
+        print("%s goes first!" % p2)
+
+    
+
+
+def draterStats(pLvl):
+    availablePts = 37 + pLvl 
+    simpleStats = [0] * 7
+    
+    #Default base 1 for Con and Agi
+    simpleStats[2] += 1
+    simpleStats[6] += 1
+
+    #Random point assignment
+    for i in range(0,availablePts):
+        rng = randint(0,51)
+        if rng in range(0, 9): #Strength
+            simpleStats[0] += 1
+        elif rng in range(10, 19): #Constitution
+            simpleStats[1] += 1
+        elif rng in range(20, 29): #Dexterity
+            simpleStats[2] += 1
+        elif rng in range(30, 39): #Agility
+            simpleStats[3] += 1
+        elif rng in range(40, 49): #Charisma
+            simpleStats[6] += 1
+        elif rng == 50: #Intelligence
+            simpleStats[4] += 1
+        elif rng == 51: #Wisdom
+            simpleStats[5] += 1
+            
+    stats = {
+        "Strength": simpleStats[0],
+        "Constitution": simpleStats[1],
+        "Dexterity": simpleStats[2],
+        "Agility": simpleStats[3],
+        "Intelligence": simpleStats[4],
+        "Wisdom": simpleStats[5],
+        "Charisma": simpleStats[6],
+        }
+    characterStats["Drater"] = simpleStats
     
 client.loop.create_task(change_status())
 client.run(os.environ['BOT_TOKEN'])    
