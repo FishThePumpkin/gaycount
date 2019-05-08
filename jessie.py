@@ -114,7 +114,7 @@ async def on_message(message):
                         else:
                             text = "%s goes first!" % p2
                             await client.send_message(message.channel, text)
-                                    break
+            break                     
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
