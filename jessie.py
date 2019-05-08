@@ -22,10 +22,10 @@ IDs = {
 }
 characterStats = {
     "Drater": [0,0,0,0,0,0,0],
-    "Josh": [2,11,4,6,8,6,3],
-    "Thad": [2,4,3,9,10,9,6],
-    "Enzo": [9,10,5,8,4,3,4],
-    "Yikes": [7,5,8,5,8,5,5]
+    "Rachel": [2,11,4,6,8,6,3],
+    "Labib": [2,4,3,9,10,9,6],
+    "Vivian": [9,10,5,8,4,3,4],
+    "Owner": [7,5,8,5,8,5,5]
     }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
@@ -82,7 +82,13 @@ async def on_message(message):
         await client.send_message(message.channel,':sparkler:')
         await client.send_message(message.channel,':fireworks:')
         await client.send_message(message.channel,':milky_way:')
-        
+    
+    if 'battle' in mess:
+        for player in characterStats:
+            if mess == 'battle <@%s>' % IDs[player]:
+                await client.send_message(message.channel,'test')
+            
+    
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
             if c in mess:
