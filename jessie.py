@@ -150,7 +150,8 @@ async def say(*args):
     await client.say(output)
     
 def battle(p1,p2):
-    await client.send_message(message.channel, "Battle begins between %s and %s" % (p1, p2))
+    text = "Battle begins between %s and %s" % (p1, p2)
+    await client.send_message(message.channel, text)
     if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
         draterStats(1)
         
@@ -159,16 +160,20 @@ def battle(p1,p2):
     
     #First turn based on agility
     if p1Stats[3] > p2Stats[3]:
-        await client.send_message(message.channel, "%s goes first!" % p1)
+        text = "%s goes first!" % p1
+        await client.send_message(message.channel, text)
     elif p1Stats[3] == p2Stats[3]:
-        print("Rolling dice...")
+        await client.send_message(message.channel, "Rolling dice...")
         rng = randint(0,1)
         if rng == 0:
-            await client.send_message(message.channel, "%s goes first!" % p1)
+            text = "%s goes first!" % p1
+            await client.send_message(message.channel, text)
         else:
-            await client.send_message(message.channel, "%s goes first!" % p2)
+            text = "%s goes first!" % p2
+            await client.send_message(message.channel, text)
     else:
-        await client.send_message(message.channel, "%s goes first!" % p2)
+        text = "%s goes first!" % p2
+        await client.send_message(message.channel, text)
 
     
 
