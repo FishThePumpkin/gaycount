@@ -87,33 +87,7 @@ async def on_message(message):
             if mess == 'battle <@%s>' % IDs[player]:
                 p2 = player
                 await client.send_message(message.channel,'test')
-                for key in IDs:
-                    if IDs[key] == message.author.id:
-                        p1 = key 
-                        text = "Battle begins between %s and %s" % (p1, p2)
-                        await client.send_message(message.channel, text)
-                        if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
-                            draterStats(1)
-
-                        p1Stats = characterStats[p1]
-                        p2Stats = characterStats[p2]
-
-                        #First turn based on agility
-                        if p1Stats[3] > p2Stats[3]:
-                            text = "%s goes first!" % p1
-                            await client.send_message(message.channel, text)
-                        elif p1Stats[3] == p2Stats[3]:
-                            await client.send_message(message.channel, "Rolling dice...")
-                            rng = randint(0,1)
-                            if rng == 0:
-                                text = "%s goes first!" % p1
-                                await client.send_message(message.channel, text)
-                            else:
-                                text = "%s goes first!" % p2
-                                await client.send_message(message.channel, text)
-                        else:
-                            text = "%s goes first!" % p2
-                            await client.send_message(message.channel, text)
+                
             break                     
     
     if not message.author.id == IDs["Bot"]:
