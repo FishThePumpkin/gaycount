@@ -117,7 +117,7 @@ async def on_message(message):
                         newMess = "It's not like I'm%sor anything..." % joinedmess
                         await client.send_message(message.channel, newMess)   
                         break
-def battle(p1,p2):
+async def battle(p1,p2):
     text = "Battle begins between %s and %s" % (p1, p2)
     await client.send_message(message.channel, text)
     if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
