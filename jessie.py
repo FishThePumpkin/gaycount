@@ -85,9 +85,12 @@ async def on_message(message):
     if 'battle' in mess:
         for player in characterStats:
             if mess == 'battle <@%s>' % IDs[player]:
-                Player = player
+                Player2 = player
                 await client.send_message(message.channel,'test')
-                battle(message.author,Player)
+                for key in IDs:
+                    if key == message.author.id:
+                       Player1 = key 
+                battle(Player1,Player2)
                 break
     
     if not message.author.id == IDs["Bot"]:
