@@ -88,7 +88,7 @@ async def on_message(message):
                 p2 = player
                 await client.send_message(message.channel,'test')
                 for key in IDs:
-                    if key == message.author.id:
+                    if IDs[key] == message.author.id:
                         p1 = key 
                         text = "Battle begins between %s and %s" % (p1, p2)
                         await client.send_message(message.channel, text)
