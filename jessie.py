@@ -81,14 +81,7 @@ async def on_message(message):
         await client.send_message(message.channel,':sparkler:')
         await client.send_message(message.channel,':fireworks:')
         await client.send_message(message.channel,':milky_way:')
-    
-    if 'battle' in mess:
-        for player in characterStats:
-            if mess == 'battle <@%s>' % IDs[player]:
-                p2 = player
-                await client.send_message(message.channel,'test')
-                
-            break                     
+                     
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
@@ -115,8 +108,92 @@ async def on_message(message):
                         await client.send_message(message.channel, newMess)   
                         break 
 
+                  
+async def battle(p1,p2):
+    await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
+    if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
+        draterStats(5)
+        
+    p1Stats = characterStats[p1]
+    p2Stats = characterStats[p2]
+    p1Hp = p1Stats[1] * 3
+    p2Hp = p2Stats[1] * 3
 
-def draterStats(pLvl):
+    currentMove = 0
+    #First turn based on agility
+    if p1Stats[3] > p2Stats[3]:
+        await client.send_message(message.channel,"%s goes first!" % p1)
+        currentMove = "p1"
+    elif p1Stats[3] == p2Stats[3]:
+        await client.send_message(message.channel,"Rolling dice...")
+        rng = randint(0,1)
+        if rng == 0:
+            await client.send_message(message.channel,"%s goes first!" % p1)
+            currentMove = "p1"
+        else:
+            await client.send_message(message.channel,"%s goes first!" % p2)
+            currentMove = "p2"
+    else:
+        await client.send_message(message.channel,"%s goes first!" % p2)
+        currentMove = "p2"
+
+    #Fighting
+    while not p1Hp <= 0 or p2Hp <= 0:
+        if currentMove == "p1":
+
+            if p2Stats[3] > 20:
+                dodge = 20
+            else:
+                dodge = p2Stats[3]
+            rng = randint(0,100)
+            if rng in range(0,dodge): #Dodge Chance
+                await client.send_message(message.channel,"%s dodged the attack!" % p2)
+                
+            else: #Take damage
+                rng = randint(0,100)  
+                if rng in range(0,p1Stats[2]): #Critical chance
+                    damage = 1.5 * p1Stats[0]
+                    p2Hp -= damage
+                    await client.send_message(message.channel,"%s Crit!" % p1)
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+                else: #Normal attack
+                    damage = p1Stats[0]
+                    p2Hp -= damage
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+            currentMove = "p2"
+            
+        elif currentMove == "p2":
+            
+            if p1Stats[3] > 20:
+                dodge = 20
+            else:
+                dodge = p2Stats[3]
+            rng = randint(0,100)
+            if rng in range(0,dodge): #Dodge Chance
+                await client.send_message(message.channel,"%s dodged the attack!" % p2)
+                
+            else: #Take damage
+                rng = randint(0,100)
+                if rng in range(0,p2Stats[2]): #Critical chance
+                    damage = 1.5 * p2Stats[0]
+                    p1Hp -= damage
+                    await client.send_message(message.channel,"%s Crit!" % p2)
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
+                else: #Normal attack
+                    damage = p2Stats[0]
+                    p1Hp -= damage
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
+            currentMove = "p1"
+
+            
+        if p1Hp <= 0:
+            await client.send_message(message.channel,"%s is the winner!" % p2)
+            break
+        elif p2Hp <= 0:
+            await client.send_message(message.channel,"%s is the winner!" % p1)
+            break
+
+async def draterStats(pLvl):
     availablePts = 37 + pLvl 
     simpleStats = [0] * 7
     
@@ -151,8 +228,9 @@ def draterStats(pLvl):
         "Wisdom": simpleStats[5],
         "Charisma": simpleStats[6],
         }
-    characterStats["Drater"] = simpleStats
-    
+    characterStats["Drater"] = simpleStats 
+
+
 @client.command()
 async def ping():
     await client.say('Pong!')
