@@ -120,151 +120,157 @@ async def on_message(message):
 
                   
 async def battle(message,p1,p2):
-    await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
     global inBattle
-    inBattle = 1
-    time.sleep(1)
-    if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
-        await draterStats(1)
-        
-    p1Stats = characterStats[p1]
-    p2Stats = characterStats[p2]
-    #Base Damage
-    p1Dmg = p1Stats[0]
-    p2Dmg = p2Stats[0]
-    #HP distribution
-    p1Hp = p1Stats[1] * 3
-    p2Hp = p2Stats[1] * 3
-    p1Crit = 0
-    p2Crit = 0
-    #Capping crit
-    if p1Stats[2] > 40:
-        p1Crit = 40
+    if inBattle == 0:
+        print("ALerady in battle")
+        return
     else:
-        p1Crit = p1Stats[2]
-    if p2Stats[2] > 40:
-        p2Crit = 40
-    else:
-        p2Crit = p2Stats[2]
-    p1Dodge = 0
-    p2Dodge = 0
-    #Dodge distribution
-    p1Dodge = p1Stats[2] // 5
-    p2Dodge = p2Stats[2] // 5
+        inBattle = 1
+        await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
+        global inBattle
+        inBattle = 1
+        time.sleep(1)
+        if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
+            await draterStats(1)
 
-    currentMove = 0
-    #First turn based on agility
-    if p1Stats[3] > p2Stats[3]:
-        await client.send_message(message.channel,"%s goes first!" % p1)
-        time.sleep(1)
-        currentMove = "p1"
-    elif p1Stats[3] == p2Stats[3]:
-        await client.send_message(message.channel,"Rolling dice...")
-        time.sleep(1)
-        rng = randint(0,1)
-        if rng == 0:
+        p1Stats = characterStats[p1]
+        p2Stats = characterStats[p2]
+        #Base Damage
+        p1Dmg = p1Stats[0]
+        p2Dmg = p2Stats[0]
+        #HP distribution
+        p1Hp = p1Stats[1] * 3
+        p2Hp = p2Stats[1] * 3
+        p1Crit = 0
+        p2Crit = 0
+        #Capping crit
+        if p1Stats[2] > 40:
+            p1Crit = 40
+        else:
+            p1Crit = p1Stats[2]
+        if p2Stats[2] > 40:
+            p2Crit = 40
+        else:
+            p2Crit = p2Stats[2]
+        p1Dodge = 0
+        p2Dodge = 0
+        #Dodge distribution
+        p1Dodge = p1Stats[2] // 5
+        p2Dodge = p2Stats[2] // 5
+
+        currentMove = 0
+        #First turn based on agility
+        if p1Stats[3] > p2Stats[3]:
             await client.send_message(message.channel,"%s goes first!" % p1)
             time.sleep(1)
             currentMove = "p1"
+        elif p1Stats[3] == p2Stats[3]:
+            await client.send_message(message.channel,"Rolling dice...")
+            time.sleep(1)
+            rng = randint(0,1)
+            if rng == 0:
+                await client.send_message(message.channel,"%s goes first!" % p1)
+                time.sleep(1)
+                currentMove = "p1"
+            else:
+                await client.send_message(message.channel,"%s goes first!" % p2)
+                time.sleep(1)
+                currentMove = "p2"
         else:
             await client.send_message(message.channel,"%s goes first!" % p2)
             time.sleep(1)
             currentMove = "p2"
-    else:
-        await client.send_message(message.channel,"%s goes first!" % p2)
-        time.sleep(1)
-        currentMove = "p2"
 
-    #Fighting
-    while not p1Hp <= 0 or p2Hp <= 0:
-        if currentMove == "p1":
-            rng = randint(0,100)
-            if rng in range(0,p2Dodge): #Dodge Chance
-                await client.send_message(message.channel,"%s dodged the attack!" % p2)
-                time.sleep(1)
-                
-            else: #Take damage
-                rng = randint(0,100)  
-                if rng in range(0,p1Crit): #Critical chance
-                    damage = 1.5 * p1Dmg
-                    p2Hp -= damage
-                    await client.send_message(message.channel,"%s Crit!" % p1)
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+        #Fighting
+        while not p1Hp <= 0 or p2Hp <= 0:
+            if currentMove == "p1":
+                rng = randint(0,100)
+                if rng in range(0,p2Dodge): #Dodge Chance
+                    await client.send_message(message.channel,"%s dodged the attack!" % p2)
                     time.sleep(1)
-                else: #Normal attack
-                    p2Hp -= p1Dmg
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,p1Dmg,p2,p2Hp))
-                    time.sleep(1)
-            currentMove = "p2"
-            
-        elif currentMove == "p2":            
-            rng = randint(0,100)
-            if rng in range(0,p1Dodge): #Dodge Chance
-                await client.send_message(message.channel,"%s dodged the attack!" % p1)
-                time.sleep(1)
-                
-            else: #Take damage
-                rng = randint(0,100) 
-                if rng in range(0,p2Crit): #Critical chance
-                    damage = 1.5 * p2Dmg
-                    p1Hp -= damage
-                    await client.send_message(message.channel,"%s Crit!" % p2)
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
-                    time.sleep(1)
-                else: #Normal attack
-                    p1Hp -= p2Dmg
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,p2Dmg,p1,p1Hp))
-                    time.sleep(1)
-            currentMove = "p1"
 
-            
-        if p1Hp <= 0:
-            await client.send_message(message.channel,"%s is the winner!" % p2)
-            break
-        elif p2Hp <= 0:
-            await client.send_message(message.channel,"%s is the winner!" % p1)
-            break
-        inBattle = 0
+                else: #Take damage
+                    rng = randint(0,100)  
+                    if rng in range(0,p1Crit): #Critical chance
+                        damage = 1.5 * p1Dmg
+                        p2Hp -= damage
+                        await client.send_message(message.channel,"%s Crit!" % p1)
+                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+                        time.sleep(1)
+                    else: #Normal attack
+                        p2Hp -= p1Dmg
+                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,p1Dmg,p2,p2Hp))
+                        time.sleep(1)
+                currentMove = "p2"
 
-async def draterStats(pLvl):
-    availablePts = 42 + pLvl 
-    simpleStats = [0] * 7
-    
-    #Resetting Drater Stats for clean slate
-    characterStats["Drater"] = [0] * 7    
-    
-    #Default base 1 for Con and Agi
-    simpleStats[2] = 1
-    simpleStats[6] = 1
+            elif currentMove == "p2":            
+                rng = randint(0,100)
+                if rng in range(0,p1Dodge): #Dodge Chance
+                    await client.send_message(message.channel,"%s dodged the attack!" % p1)
+                    time.sleep(1)
 
-    #Random point assignment
-    for i in range(0,availablePts):
-        rng = randint(0,51)
-        if rng in range(0, 9): #Strength
-            simpleStats[0] += 1
-        elif rng in range(10, 19): #Constitution
-            simpleStats[1] += 1
-        elif rng in range(20, 29): #Dexterity
-            simpleStats[2] += 1
-        elif rng in range(30, 39): #Agility
-            simpleStats[3] += 1
-        elif rng in range(40, 49): #Charisma
-            simpleStats[6] += 1
-        elif rng == 50: #Intelligence
-            simpleStats[4] += 1
-        elif rng == 51: #Wisdom
-            simpleStats[5] += 1
-            
-    stats = {
-        "Strength": simpleStats[0],
-        "Constitution": simpleStats[1],
-        "Dexterity": simpleStats[2],
-        "Agility": simpleStats[3],
-        "Intelligence": simpleStats[4],
-        "Wisdom": simpleStats[5],
-        "Charisma": simpleStats[6],
-        }
-    characterStats["Drater"] = simpleStats 
+                else: #Take damage
+                    rng = randint(0,100) 
+                    if rng in range(0,p2Crit): #Critical chance
+                        damage = 1.5 * p2Dmg
+                        p1Hp -= damage
+                        await client.send_message(message.channel,"%s Crit!" % p2)
+                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
+                        time.sleep(1)
+                    else: #Normal attack
+                        p1Hp -= p2Dmg
+                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,p2Dmg,p1,p1Hp))
+                        time.sleep(1)
+                currentMove = "p1"
+
+
+            if p1Hp <= 0:
+                await client.send_message(message.channel,"%s is the winner!" % p2)
+                break
+            elif p2Hp <= 0:
+                await client.send_message(message.channel,"%s is the winner!" % p1)
+                break
+            inBattle = 0
+
+    async def draterStats(pLvl):
+        availablePts = 42 + pLvl 
+        simpleStats = [0] * 7
+
+        #Resetting Drater Stats for clean slate
+        characterStats["Drater"] = [0] * 7    
+
+        #Default base 1 for Con and Agi
+        simpleStats[2] = 1
+        simpleStats[6] = 1
+
+        #Random point assignment
+        for i in range(0,availablePts):
+            rng = randint(0,51)
+            if rng in range(0, 9): #Strength
+                simpleStats[0] += 1
+            elif rng in range(10, 19): #Constitution
+                simpleStats[1] += 1
+            elif rng in range(20, 29): #Dexterity
+                simpleStats[2] += 1
+            elif rng in range(30, 39): #Agility
+                simpleStats[3] += 1
+            elif rng in range(40, 49): #Charisma
+                simpleStats[6] += 1
+            elif rng == 50: #Intelligence
+                simpleStats[4] += 1
+            elif rng == 51: #Wisdom
+                simpleStats[5] += 1
+
+        stats = {
+            "Strength": simpleStats[0],
+            "Constitution": simpleStats[1],
+            "Dexterity": simpleStats[2],
+            "Agility": simpleStats[3],
+            "Intelligence": simpleStats[4],
+            "Wisdom": simpleStats[5],
+            "Charisma": simpleStats[6],
+            }
+        characterStats["Drater"] = simpleStats 
 
 
 @client.command()
