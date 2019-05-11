@@ -29,7 +29,7 @@ permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
 jessie = 328
 
-inBattle = false
+inBattle = False
 
 async def change_status():
     await client.wait_until_ready()
@@ -87,7 +87,7 @@ async def on_message(message):
         global inBattle
         if not message.author.id == IDs["Bot"]:
             if message.author.id == IDs["Owner"]:
-                if inBattle == false:
+                if inBattle == False:
                     await battle(message,"Drater","Paula")
                 else:
                     await client.send_message(message.channel,'A battle is already in progress. Please try again later.')
@@ -121,7 +121,7 @@ async def on_message(message):
 async def battle(message,p1,p2):
     await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
     global inBattle
-    inBattle = true
+    inBattle = True
     time.sleep(1)
     if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
         await draterStats(1)
@@ -223,7 +223,7 @@ async def battle(message,p1,p2):
         elif p2Hp <= 0:
             await client.send_message(message.channel,"%s is the winner!" % p1)
             break
-        inBattle = false
+        inBattle = False
 
 async def draterStats(pLvl):
     availablePts = 42 + pLvl 
