@@ -21,11 +21,10 @@ IDs = {
     "Labib": "378820414350295040"
 }
 characterStats = {
-    "Rachel": [2,11,4,6,8,6,3],
-    "Labib": [2,4,3,9,10,9,6],
-    "Vivian": [9,10,5,8,4,3,4],
-    "Owner": [7,5,8,5,8,5,5]
+    "Drater": [0,0,0,0,0,0,0],
+    "Paula": [2,11,4,6,8,6,3]
     }
+
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
 jessie = 328
@@ -81,7 +80,9 @@ async def on_message(message):
         await client.send_message(message.channel,':sparkler:')
         await client.send_message(message.channel,':fireworks:')
         await client.send_message(message.channel,':milky_way:')
-                     
+    
+    if 'battle' in mess:
+        battle("Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
