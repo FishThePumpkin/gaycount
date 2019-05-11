@@ -217,7 +217,7 @@ async def battle(message,p1,p2):
             break
 
 async def draterStats(pLvl):
-    availablePts = 37 + pLvl 
+    availablePts = 42 + pLvl 
     simpleStats = [0] * 7
     
     #Resetting Drater Stats for clean slate
