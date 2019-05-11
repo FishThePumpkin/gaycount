@@ -212,10 +212,7 @@ async def draterStats(pLvl):
     simpleStats = [0] * 7
     
     #Resetting Drater Stats for clean slate
-    cleaner = characterStats["Drater"]
-    for i in cleaner:
-        cleaner[i] = 0
-        
+    characterStats["Drater"] = [0] * 7    
     
     #Default base 1 for Con and Agi
     simpleStats[2] = 1
