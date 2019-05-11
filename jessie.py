@@ -83,7 +83,8 @@ async def on_message(message):
     
     if 'battle' in mess:
         if not message.author.id == IDs["Bot"]:
-            await battle(message,"Drater","Paula")
+            if message.author.id == IDs["Owner"]:
+                await battle(message,"Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
@@ -119,8 +120,24 @@ async def battle(message,p1,p2):
         
     p1Stats = characterStats[p1]
     p2Stats = characterStats[p2]
+    #HP distribution
     p1Hp = p1Stats[1] * 3
     p2Hp = p2Stats[1] * 3
+    p1Crit = 0
+    p2Crit = 0
+    #Capping crit
+    if p1Stats[2] > 40:
+        crit = 40
+    else:
+        crit = p1Stats[2]
+    if p2Stats[2] > 40:
+        crit = 40
+    else:
+        crit = p2Stats[2]
+    p1Dodge = 0
+    p2Dodge = 0
+    #Dodge distribution
+    p1
 
     currentMove = 0
     #First turn based on agility
@@ -186,7 +203,8 @@ async def battle(message,p1,p2):
                 
             else: #Take damage
                 rng = randint(0,100)
-                if rng in range(0,p2Stats[2]): #Critical chance
+                
+                if rng in range(0,crit): #Critical chance
                     damage = 1.5 * p2Stats[0]
                     p1Hp -= damage
                     await client.send_message(message.channel,"%s Crit!" % p2)
