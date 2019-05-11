@@ -82,7 +82,7 @@ async def on_message(message):
         await client.send_message(message.channel,':milky_way:')
     
     if 'battle' in mess:
-        battle("Drater","Paula")
+        await battle("Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
