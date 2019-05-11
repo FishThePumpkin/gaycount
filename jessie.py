@@ -114,7 +114,7 @@ async def on_message(message):
 async def battle(message,p1,p2):
     await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
     if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
-        draterStats(5)
+        await draterStats(1)
         
     p1Stats = characterStats[p1]
     p2Stats = characterStats[p2]
