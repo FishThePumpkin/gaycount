@@ -22,7 +22,7 @@ IDs = {
 }
 characterStats = {
     "Drater": [0,0,0,0,0,0,0],
-    "Paula": [2,11,4,6,8,6,3]
+    "Paula": [2,11,9,6,8,6,3]
     }
 
 permissions = [IDs["Vivian"],IDs["Owner"]]
