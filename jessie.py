@@ -120,6 +120,9 @@ async def battle(message,p1,p2):
         
     p1Stats = characterStats[p1]
     p2Stats = characterStats[p2]
+    #Base Damage
+    p1Dmg = p1Stats[0]
+    p2Dmg = p2Stats[0]
     #HP distribution
     p1Hp = p1Stats[1] * 3
     p2Hp = p2Stats[1] * 3
@@ -137,7 +140,8 @@ async def battle(message,p1,p2):
     p1Dodge = 0
     p2Dodge = 0
     #Dodge distribution
-    p1
+    p1Dodge = p1Stats[2] // 5
+    p2Dodge = p2Stats[2] // 5
 
     currentMove = 0
     #First turn based on agility
@@ -165,55 +169,42 @@ async def battle(message,p1,p2):
     #Fighting
     while not p1Hp <= 0 or p2Hp <= 0:
         if currentMove == "p1":
-
-            if p2Stats[3] > 20:
-                dodge = 20
-            else:
-                dodge = p2Stats[3]
             rng = randint(0,100)
-            if rng in range(0,dodge): #Dodge Chance
+            if rng in range(0,p2Dodge): #Dodge Chance
                 await client.send_message(message.channel,"%s dodged the attack!" % p2)
                 time.sleep(1)
                 
             else: #Take damage
                 rng = randint(0,100)  
-                if rng in range(0,p1Stats[2]): #Critical chance
-                    damage = 1.5 * p1Stats[0]
+                if rng in range(0,p1Crit): #Critical chance
+                    damage = 1.5 * p1Dmg
                     p2Hp -= damage
                     await client.send_message(message.channel,"%s Crit!" % p1)
                     await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
                     time.sleep(1)
                 else: #Normal attack
-                    damage = p1Stats[0]
-                    p2Hp -= damage
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+                    p2Hp -= p1Dmg
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,p1Dmg,p2,p2Hp))
                     time.sleep(1)
             currentMove = "p2"
             
-        elif currentMove == "p2":
-            
-            if p1Stats[3] > 20:
-                dodge = 20
-            else:
-                dodge = p2Stats[3]
+        elif currentMove == "p2":            
             rng = randint(0,100)
-            if rng in range(0,dodge): #Dodge Chance
-                await client.send_message(message.channel,"%s dodged the attack!" % p2)
+            if rng in range(0,p1Dodge): #Dodge Chance
+                await client.send_message(message.channel,"%s dodged the attack!" % p1)
                 time.sleep(1)
                 
             else: #Take damage
-                rng = randint(0,100)
-                
-                if rng in range(0,crit): #Critical chance
-                    damage = 1.5 * p2Stats[0]
+                rng = randint(0,100) 
+                if rng in range(0,p2Crit): #Critical chance
+                    damage = 1.5 * p2Dmg
                     p1Hp -= damage
                     await client.send_message(message.channel,"%s Crit!" % p2)
                     await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
                     time.sleep(1)
                 else: #Normal attack
-                    damage = p2Stats[0]
-                    p1Hp -= damage
-                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
+                    p1Hp -= p2Dmg
+                    await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,p2Dmg,p1,p1Hp))
                     time.sleep(1)
             currentMove = "p1"
 
