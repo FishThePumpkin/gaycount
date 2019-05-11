@@ -82,7 +82,7 @@ async def on_message(message):
         await client.send_message(message.channel,':milky_way:')
     
     if 'battle' in mess:
-        await battle("Drater","Paula")
+        await battle(message,"Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
@@ -110,7 +110,7 @@ async def on_message(message):
                         break 
 
                   
-async def battle(p1,p2):
+async def battle(message,p1,p2):
     await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
     if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
         draterStats(5)
