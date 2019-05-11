@@ -130,13 +130,13 @@ async def battle(message,p1,p2):
     p2Crit = 0
     #Capping crit
     if p1Stats[2] > 40:
-        crit = 40
+        p1Crit = 40
     else:
-        crit = p1Stats[2]
+        p1Crit = p1Stats[2]
     if p2Stats[2] > 40:
-        crit = 40
+        p2Crit = 40
     else:
-        crit = p2Stats[2]
+        p2Crit = p2Stats[2]
     p1Dodge = 0
     p2Dodge = 0
     #Dodge distribution
