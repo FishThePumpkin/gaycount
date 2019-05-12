@@ -116,6 +116,7 @@ async def on_message(message):
 
                   
 async def battle(message,p1,p2):
+    global inBattle
     if inBattle == 0:
         print("ALerady in battle")
         return
