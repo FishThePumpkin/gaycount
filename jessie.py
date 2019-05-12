@@ -91,12 +91,12 @@ async def on_message(message):
     if 'battle' in mess:
          if not message.author.id == IDs["Bot"]:
             for key in IDs:
-                if mess == "battle <@%s>" % key:
+                if mess == "battle <@%s>" % IDs[key]:
                     await client.send_message(message.channel,"Battle begins.")
                     if auth in characterOwners:
                         if key in characterOwners:
                             global inBattle               
-                            await battle(message,characterOwners[auth],characterOwners[key])
+                            await battle(message,characterOwners[auth],characterOwners[IDs[key]])
                             return
         
        
