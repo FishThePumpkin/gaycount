@@ -118,7 +118,8 @@ async def on_message(message):
 async def battle(message,p1,p2):
     global inBattle
     if inBattle == 1:
-        await client.send_message(message.channel,"Another battle is already in progress. Try again later.")
+        authid = message.author.id
+        await client.send_message(message.channel,"<@%s> Another battle is already in progress. Try again later." % authid)
         return
     else:
         inBattle += 1
