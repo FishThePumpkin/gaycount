@@ -117,8 +117,8 @@ async def on_message(message):
                   
 async def battle(message,p1,p2):
     global inBattle
-    if inBattle == 0:
-        print("ALerady in battle")
+    if inBattle == 1:
+        await client.send_message(message.channel,"Another battle is already in progress. Try again later.")
         return
     else:
         inBattle = 1
