@@ -94,7 +94,7 @@ async def on_message(message):
                 if mess == "battle <@%s>" % IDs[key]:
                     await client.send_message(message.channel,"Battle begins.")
                     if auth in characterOwners:
-                        if key in characterOwners:
+                        if IDs[key] in characterOwners:
                             global inBattle               
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
                             return
