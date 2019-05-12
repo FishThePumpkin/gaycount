@@ -89,7 +89,7 @@ async def on_message(message):
         await client.send_message(message.channel,':milky_way:')
     
     if 'battle' in mess:
-         if not message.author.id == IDs["Bot"]:
+         if not auth == IDs["Bot"]:
             for key in IDs:
                 if mess == "battle <@%s>" % IDs[key]:
                     await client.send_message(message.channel,"Battle begins.")
@@ -98,7 +98,11 @@ async def on_message(message):
                             global inBattle               
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
                             return
-        
+                        else:
+                            await client.send_message(message.channel,"This user does not have a character!")
+                    else:
+                        await client.send_message(message.channel,"<@%s> You do not have a character!" % auth>")
+                        return                          
        
             #if message.author.id == IDs["Owner"]:
                 #await battle(message,"Drater","Paula")
