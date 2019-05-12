@@ -87,11 +87,7 @@ async def on_message(message):
         global inBattle
         if not message.author.id == IDs["Bot"]:
             if message.author.id == IDs["Owner"]:
-                if inBattle == 0:
-                    await battle(message,"Drater","Paula")
-                    inBattle = 1
-                else:
-                    await client.send_message(message.channel,'A battle is already in progress. Please try again later.')
+                await battle(message,"Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
