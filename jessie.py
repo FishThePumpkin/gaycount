@@ -93,17 +93,14 @@ async def on_message(message):
             for key in IDs:
                 if mess == "battle <@%s>" % IDs[key]:
                     #await client.send_message(message.channel,"Battle begins.")
-                    if not IDs[key] in characterOwners:
-                            await client.send_message(message.channel,"This user does not have a character!")
-                            return
                     if auth in characterOwners:
-                        if not IDs[key] in characterOwners:
-                            await client.send_message(message.channel,"This user does not have a character!")
-                            return
-                        else:
+                        if IDs[key] in characterOwners:
                             global inBattle               
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
-                            return       
+                            return  
+                        else:
+                            await client.send_message(message.channel,"This user does not have a character!")
+                            return     
                     else:
                         await client.send_message(message.channel,"<@%s> You do not have a character!" % auth)
                         return                          
