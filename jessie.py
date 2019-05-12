@@ -26,7 +26,7 @@ characterStats = {
     "Vivian": [6,6,8,6,7,7,5]
 }
 characterOwners = {
-    "24643747446377676":"Drater",
+    "246437474463776769":"Drater",
     "556089994708779033":"Carla",
     "346924005997019139":"Vivian"
 }
@@ -98,8 +98,7 @@ async def on_message(message):
                             global inBattle               
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
                             return
-                        else:
-                            print("test")
+                        elif not IDs[key] in characterOwners:
                             await client.send_message(message.channel,"This user does not have a character!")
                             return
                     else:
