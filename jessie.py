@@ -122,8 +122,6 @@ async def battle(message,p1,p2):
     else:
         inBattle = 1
         await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
-        global inBattle
-        inBattle = 1
         time.sleep(1)
         if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
             await draterStats(1)
