@@ -121,7 +121,7 @@ async def battle(message,p1,p2):
         await client.send_message(message.channel,"Another battle is already in progress. Try again later.")
         return
     else:
-        inBattle = 1
+        inBattle += 1
         await client.send_message(message.channel,"Battle begins between %s and %s" % (p1, p2))
         time.sleep(1)
         if p1 == "Drater" or p2 == "Drater": #Initialise stats for Drater
@@ -220,11 +220,13 @@ async def battle(message,p1,p2):
 
             if p1Hp <= 0:
                 await client.send_message(message.channel,"%s is the winner!" % p2)
+                inBattle = 0
                 break
             elif p2Hp <= 0:
                 await client.send_message(message.channel,"%s is the winner!" % p1)
+                inBattle = 0
                 break
-            inBattle = 0
+            
 
 async def draterStats(pLvl):
     availablePts = 42 + pLvl 
