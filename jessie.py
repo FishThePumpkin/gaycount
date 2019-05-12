@@ -226,45 +226,45 @@ async def battle(message,p1,p2):
                 break
             inBattle = 0
 
-    async def draterStats(pLvl):
-        availablePts = 42 + pLvl 
-        simpleStats = [0] * 7
+async def draterStats(pLvl):
+    availablePts = 42 + pLvl 
+    simpleStats = [0] * 7
 
-        #Resetting Drater Stats for clean slate
-        characterStats["Drater"] = [0] * 7    
+    #Resetting Drater Stats for clean slate
+    characterStats["Drater"] = [0] * 7    
 
-        #Default base 1 for Con and Agi
-        simpleStats[2] = 1
-        simpleStats[6] = 1
+    #Default base 1 for Con and Agi
+    simpleStats[2] = 1
+    simpleStats[6] = 1
 
-        #Random point assignment
-        for i in range(0,availablePts):
-            rng = randint(0,51)
-            if rng in range(0, 9): #Strength
-                simpleStats[0] += 1
-            elif rng in range(10, 19): #Constitution
-                simpleStats[1] += 1
-            elif rng in range(20, 29): #Dexterity
-                simpleStats[2] += 1
-            elif rng in range(30, 39): #Agility
-                simpleStats[3] += 1
-            elif rng in range(40, 49): #Charisma
-                simpleStats[6] += 1
-            elif rng == 50: #Intelligence
-                simpleStats[4] += 1
-            elif rng == 51: #Wisdom
-                simpleStats[5] += 1
+    #Random point assignment
+    for i in range(0,availablePts):
+        rng = randint(0,51)
+        if rng in range(0, 9): #Strength
+            simpleStats[0] += 1
+        elif rng in range(10, 19): #Constitution
+            simpleStats[1] += 1
+        elif rng in range(20, 29): #Dexterity
+            simpleStats[2] += 1
+        elif rng in range(30, 39): #Agility
+            simpleStats[3] += 1
+        elif rng in range(40, 49): #Charisma
+            simpleStats[6] += 1
+        elif rng == 50: #Intelligence
+            simpleStats[4] += 1
+        elif rng == 51: #Wisdom
+            simpleStats[5] += 1
 
-        stats = {
-            "Strength": simpleStats[0],
-            "Constitution": simpleStats[1],
-            "Dexterity": simpleStats[2],
-            "Agility": simpleStats[3],
-            "Intelligence": simpleStats[4],
-            "Wisdom": simpleStats[5],
-            "Charisma": simpleStats[6],
-            }
-        characterStats["Drater"] = simpleStats 
+    stats = {
+        "Strength": simpleStats[0],
+        "Constitution": simpleStats[1],
+        "Dexterity": simpleStats[2],
+        "Agility": simpleStats[3],
+        "Intelligence": simpleStats[4],
+        "Wisdom": simpleStats[5],
+        "Charisma": simpleStats[6],
+        }
+    characterStats["Drater"] = simpleStats 
 
 
 @client.command()
