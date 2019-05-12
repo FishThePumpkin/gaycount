@@ -26,7 +26,7 @@ characterStats = {
     "Vivian": [6,6,8,6,7,7,5]
 }
 characterOwners = {
-    "246437474463776769":"Drater",
+    "24643747446377676":"Drater",
     "556089994708779033":"Carla",
     "346924005997019139":"Vivian"
 }
