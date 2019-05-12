@@ -99,7 +99,9 @@ async def on_message(message):
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
                             return
                         else:
+                            print("test")
                             await client.send_message(message.channel,"This user does not have a character!")
+                            return
                     else:
                         await client.send_message(message.channel,"<@%s> You do not have a character!" % auth)
                         return                          
