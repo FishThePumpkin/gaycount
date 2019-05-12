@@ -22,9 +22,14 @@ IDs = {
 }
 characterStats = {
     "Drater": [0,0,0,0,0,0,0],
-    "Paula": [2,11,9,6,8,6,3]
-    }
-
+    "Carla": [2,11,9,6,8,6,3],
+    "Jenny": [39,1,1,1,1,1,1]
+}
+characterOwners = {
+    "246437474463776769":"Drater",
+    "556089994708779033":"Carla",
+    "346924005997019139":"Jenny"
+}
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
 jessie = 328
@@ -84,10 +89,18 @@ async def on_message(message):
         await client.send_message(message.channel,':milky_way:')
     
     if 'battle' in mess:
-        global inBattle
-        if not message.author.id == IDs["Bot"]:
-            if message.author.id == IDs["Owner"]:
-                await battle(message,"Drater","Paula")
+         if not message.author.id == IDs["Bot"]:
+            for key in IDs:
+                if mess == "battle <@%s>" % key:
+                    if auth in characterOwners:
+                        if key in characterOwners:
+                            global inBattle               
+                            await battle(message,characterOwners[auth],characterOwners[key])
+                            return
+        
+       
+            #if message.author.id == IDs["Owner"]:
+                #await battle(message,"Drater","Paula")
     
     if not message.author.id == IDs["Bot"]:
         for c in imnot:
