@@ -23,12 +23,12 @@ IDs = {
 characterStats = {
     "Drater": [0,0,0,0,0,0,0],
     "Carla": [2,11,9,6,8,6,3],
-    "Jenny": [39,1,1,1,1,1,1]
+    "Vivian": [6,6,8,6,7,7,5]
 }
 characterOwners = {
     "246437474463776769":"Drater",
     "556089994708779033":"Carla",
-    "346924005997019139":"Jenny"
+    "346924005997019139":"Vivian"
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
@@ -92,7 +92,7 @@ async def on_message(message):
          if not auth == IDs["Bot"]:
             for key in IDs:
                 if mess == "battle <@%s>" % IDs[key]:
-                    await client.send_message(message.channel,"Battle begins.")
+                    #await client.send_message(message.channel,"Battle begins.")
                     if auth in characterOwners:
                         if IDs[key] in characterOwners:
                             global inBattle               
