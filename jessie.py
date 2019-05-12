@@ -101,7 +101,7 @@ async def on_message(message):
                         else:
                             await client.send_message(message.channel,"This user does not have a character!")
                     else:
-                        await client.send_message(message.channel,"<@%s> You do not have a character!" % auth>")
+                        await client.send_message(message.channel,"<@%s> You do not have a character!" % auth)
                         return                          
        
             #if message.author.id == IDs["Owner"]:
