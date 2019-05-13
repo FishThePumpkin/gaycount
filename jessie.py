@@ -306,6 +306,8 @@ async def draterStats(pLvl):
         }
     characterStats["Drater"] = simpleStats 
 
+async def saythis(messy):
+    await client.send_message("general✤",messy)
 
 @client.command()
 async def ping():
