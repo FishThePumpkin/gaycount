@@ -97,7 +97,7 @@ async def on_message(message):
                         if IDs[key] in characterOwners:
                             global inBattle               
                             await battle(message,characterOwners[auth],characterOwners[IDs[key]])
-                            return  
+                            break  
                         else:
                             await client.send_message(message.channel,"This user does not have a character!")
                             return     
@@ -136,6 +136,18 @@ async def on_message(message):
                   
 async def battle(message,p1,p2):
     global inBattle
+    mess = message.content.lower()
+    p1auth = ""
+    p2auth = ""
+    for key in characterOwners:
+        if characterOwners[key] == p1:
+            p1auth = key
+        elif characterOwners[key] == p2:
+            p2auth = key
+        if not p1auth == "" and p2auth == "":
+            break
+            
+    
     if inBattle == 1:
         authid = message.author.id
         await client.send_message(message.channel,"<@%s> Another battle is already in progress. Try again later." % authid)
@@ -198,44 +210,50 @@ async def battle(message,p1,p2):
         #Fighting
         while not p1Hp <= 0 or p2Hp <= 0:
             if currentMove == "p1":
-                rng = randint(0,100)
-                if rng in range(0,p2Dodge): #Dodge Chance
-                    await client.send_message(message.channel,"%s dodged the attack!" % p2)
-                    time.sleep(1)
+                await client.send_message(message.channel,"Please make a move <@%s>" % p1auth)
+                if message.author.id == p1auth:
+                    if mess == "attack":
+                        rng = randint(0,100)
+                        if rng in range(0,p2Dodge): #Dodge Chance
+                            await client.send_message(message.channel,"%s dodged the attack!" % p2)
+                            time.sleep(1)
 
-                else: #Take damage
-                    rng = randint(0,100)  
-                    if rng in range(0,p1Crit): #Critical chance
-                        damage = 1.5 * p1Dmg
-                        p2Hp -= damage
-                        await client.send_message(message.channel,"%s Crit!" % p1)
-                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
-                        time.sleep(1)
-                    else: #Normal attack
-                        p2Hp -= p1Dmg
-                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,p1Dmg,p2,p2Hp))
-                        time.sleep(1)
-                currentMove = "p2"
+                        else: #Take damage
+                            rng = randint(0,100)  
+                            if rng in range(0,p1Crit): #Critical chance
+                                damage = 1.5 * p1Dmg
+                                p2Hp -= damage
+                                await client.send_message(message.channel,"%s Crit!" % p1)
+                                await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,damage,p2,p2Hp))
+                                time.sleep(1)
+                            else: #Normal attack
+                                p2Hp -= p1Dmg
+                                await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p1,p1Dmg,p2,p2Hp))
+                                time.sleep(1)
+                        currentMove = "p2"
 
-            elif currentMove == "p2":            
-                rng = randint(0,100)
-                if rng in range(0,p1Dodge): #Dodge Chance
-                    await client.send_message(message.channel,"%s dodged the attack!" % p1)
-                    time.sleep(1)
+            elif currentMove == "p2":   
+                await client.send_message(message.channel,"Please make a move <@%s>" % p1auth)
+                if message.author.id == p1auth:
+                    if mess == "attack":
+                        rng = randint(0,100)
+                        if rng in range(0,p1Dodge): #Dodge Chance
+                            await client.send_message(message.channel,"%s dodged the attack!" % p1)
+                            time.sleep(1)
 
-                else: #Take damage
-                    rng = randint(0,100) 
-                    if rng in range(0,p2Crit): #Critical chance
-                        damage = 1.5 * p2Dmg
-                        p1Hp -= damage
-                        await client.send_message(message.channel,"%s Crit!" % p2)
-                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
-                        time.sleep(1)
-                    else: #Normal attack
-                        p1Hp -= p2Dmg
-                        await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,p2Dmg,p1,p1Hp))
-                        time.sleep(1)
-                currentMove = "p1"
+                        else: #Take damage
+                            rng = randint(0,100) 
+                            if rng in range(0,p2Crit): #Critical chance
+                                damage = 1.5 * p2Dmg
+                                p1Hp -= damage
+                                await client.send_message(message.channel,"%s Crit!" % p2)
+                                await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,damage,p1,p1Hp))
+                                time.sleep(1)
+                            else: #Normal attack
+                                p1Hp -= p2Dmg
+                                await client.send_message(message.channel,"%s dealt %d damage to %s, leaving them with %d HP remaining!" % (p2,p2Dmg,p1,p1Hp))
+                                time.sleep(1)
+                        currentMove = "p1"
 
 
             if p1Hp <= 0:
