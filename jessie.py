@@ -233,8 +233,8 @@ async def battle(message,p1,p2):
                         currentMove = "p2"
 
             elif currentMove == "p2":   
-                await client.send_message(message.channel,"Please make a move <@%s>" % p1auth)
-                if message.author.id == p1auth:
+                await client.send_message(message.channel,"Please make a move <@%s>" % p2auth)
+                if message.author.id == p2auth:
                     if mess == "attack":
                         rng = randint(0,100)
                         if rng in range(0,p1Dodge): #Dodge Chance
