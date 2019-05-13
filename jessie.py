@@ -32,7 +32,7 @@ characterOwners = {
 }
 permissions = [IDs["Vivian"],IDs["Owner"]]
 imnotPERMS = [IDs["Rachel"],IDs["Labib"]]
-jessie = 352
+jessie = 353
 
 inBattle = 0
 
