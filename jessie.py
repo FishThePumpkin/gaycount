@@ -230,7 +230,7 @@ async def battle(message,p1,p2):
                 
             await client.send_message(message.channel,"Please make a move <@%s>" % currentauth)
             if message.author.id == currentauth:
-                if mess == "attack":
+                
                     rng = randint(0,100)
                     if rng in range(0,nextdodge): #Dodge Chance
                         await client.send_message(message.channel,"%s dodged the attack!" % nextturn)
